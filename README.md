@@ -8,7 +8,7 @@ Arquiteturado em padrão RESTFul por ser de fácil chamada por outros sistemas.
 
 ### Desafio
 
-<pre>
+```
 Desenvolvedor Ruby Rails
 
 Entregando mercadorias
@@ -31,4 +31,4 @@ Também gostaríamos de acompanhar o desenvolvimento da sua aplicação através
 Nós solicitamos que você trabalhe no desenvolvimento desse sistema sozinho e não divulgue a solução desse problema pela internet. O prazo máximo para entrega é dia 02/04.
 
 Bom desafio!
-</pre>
+```
