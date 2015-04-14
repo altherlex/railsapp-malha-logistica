@@ -37,6 +37,15 @@ class PathsController < ApplicationController
     end
   end
 
+  def create_massive
+    paths = []
+    params[:massive_paths].split(/\r\n/).each do |line|
+      paths << Path.massive_new(*line.split(','))
+    end
+    Path.import(paths)
+    redirect_to({action: :index }, notice: "Paths was successfully created.")
+  end
+
   # PATCH/PUT /paths/1
   # PATCH/PUT /paths/1.json
   def update

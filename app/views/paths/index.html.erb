@@ -1,5 +1,27 @@
 <h1>Listing paths</h1>
 
+<%= link_to 'New massive Path', "#", :onclick=>"go()" %>
+<script>
+function go(){
+  if ($('#new_path').is(":visible"))
+    $('#new_path').hide();  
+  else
+    $('#new_path').show();
+}
+</script>
+<div id="new_path" style='display:none'>
+  <pre>
+  Each line for each routes
+  Put the follow infos between comma(,):
+    <b>local, begin_point, end_point, distance</b>
+  </pre>
+  <form accept-charset="UTF-8" action="<%=create_massive_paths_path%>" method="get">
+    <%= text_area_tag :massive_paths, nil, rows:15, cols:130 %><br>
+    <input name="commit" type="submit" value="Create massive Path">
+  </form>
+</div>
+<fieldset style="width:400px; height:250px; overflow:auto;border: solid 1px;">
+<legend>Population</legend>
 <table>
   <thead>
     <tr>
@@ -12,7 +34,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @paths.each do |path| %>
       <tr>
@@ -27,7 +48,15 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Path', new_path_path %>
+<%#= link_to 'New Path', new_path_path %>
+</fieldset>
+<fieldset style="width:950px; height:250px; overflow:auto;border: solid 1px;">
+<legend>Operation</legend>
+  <%= text_field :map_id, nil, type: :text, placeholder: "Local"%>
+  <%= text_field :begin_point, nil, type: :text, placeholder: "Begin point"%>
+  <%= text_field :end_point, nil, type: :text, placeholder: "End point"%>
+  <%= text_field :autonomy, nil, type: :text, placeholder: "Autonomy (Km/L)"%>
+  <%= text_field :price, nil, type: :text, placeholder: "Price (R$/L) (ex: 2.5)"%>
+  <br>
+  <input name="commit" value="Check the best route">
+</fieldset>

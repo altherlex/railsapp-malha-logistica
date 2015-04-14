@@ -1,5 +1,9 @@
 MalhaLogistica::Application.routes.draw do
-  resources :paths
+  resources :paths do
+    collection do
+      get :create_massive
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

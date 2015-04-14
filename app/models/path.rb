@@ -1,5 +1,9 @@
 class Path < ActiveRecord::Base
 
+	def self.massive_new(*params)
+		p = params.map!(&:strip)
+		new({local:p[0], begin_point:p[1], end_point:p[2], distance:p[3]})
+	end
 	class << self
 		# map id, begin_point, end_point, autonomy (km/L), price (R$/L)
 		def better(map_id, begin_point, end_point, autonomy, price)

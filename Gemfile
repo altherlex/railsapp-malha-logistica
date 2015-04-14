@@ -56,3 +56,5 @@ group :test, :development do
 #  gem "shoulda"
 #  gem "email_spec"
 end
+ 
+gem "activerecord-import"
