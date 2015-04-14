@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @path.local %>
+</p>
+
+<p>
+  <strong>Begin point:</strong>
+  <%= @path.begin_point %>
+</p>
+
+<p>
+  <strong>End point:</strong>
+  <%= @path.end_point %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @path.distance %>
+</p>
+
+<%= link_to 'Edit', edit_path_path(@path) %> |
+<%= link_to 'Back', paths_path %>
