@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 
 group :production, :staging do
   gem "pg"
-	gem 'rails_12factor'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -48,9 +48,6 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0'
