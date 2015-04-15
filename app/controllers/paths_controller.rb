@@ -71,6 +71,16 @@ class PathsController < ApplicationController
     end
   end
 
+  # Ajax: get the best route
+  def figure
+    # Benchmark
+    report = Benchmark.bm do |x|
+      x.report("select map:"){ @routes = Path.where(local:params[:map_id]) }
+      x.report("analyse routes:"){ @analyse_routes = Path.analyse_paths(@routes.as_json)}
+      x.report("taking the best:"){ @top_result = Path.mount_result(@analyse_routes, params[:begin_point], params[:end_point], params[:autonomy], params[:price]) }
+    end
+    render text:@top_result.inspect
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_path

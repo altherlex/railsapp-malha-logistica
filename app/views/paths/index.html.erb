@@ -1,6 +1,4 @@
-<h1>Listing paths</h1>
-
-<%= link_to 'New massive Path', "#", :onclick=>"go()" %>
+<%= link_to '+Add massive paths', "#", :onclick=>"go()" %>
 <script>
 function go(){
   if ($('#new_path').is(":visible"))
@@ -9,8 +7,9 @@ function go(){
     $('#new_path').show();
 }
 </script>
-<div id="new_path" style='display:none'>
-  <pre>
+<div class="panel panel-default" id="new_path" style='display:none'>
+<div class="panel-body">
+  <pre class="bg-danger">
   Each line for each routes
   Put the follow infos between comma(,):
     <b>local, begin_point, end_point, distance</b>
@@ -20,15 +19,17 @@ function go(){
     <input name="commit" type="submit" value="Create massive Path">
   </form>
 </div>
-<fieldset style="width:400px; height:250px; overflow:auto;border: solid 1px;">
+</div>
+<div class="panel panel-default" style="height:250px; overflow:auto;border: solid 1px;">
+<div class="panel-body">
 <legend>Population</legend>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Local</th>
       <th>Begin point</th>
       <th>End point</th>
-      <th>Distance</th>
+      <th>Distance (Km)</th>
       <th></th>
       <th></th>
       <th></th>
@@ -41,22 +42,49 @@ function go(){
         <td><%= path.begin_point %></td>
         <td><%= path.end_point %></td>
         <td><%= path.distance %></td>
-        <td><%= link_to 'Show', path %></td>
-        <td><%= link_to 'Edit', edit_path_path(path) %></td>
-        <td><%= link_to 'Destroy', path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', path, type:"button", class:"btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_path_path(path), type:"button", class:"btn btn-warning btn-xs" %></td>
+        <td><%= link_to 'Destroy', path, type:"button", class:"btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%#= link_to 'New Path', new_path_path %>
-</fieldset>
-<fieldset style="width:950px; height:250px; overflow:auto;border: solid 1px;">
+</div>
+</div>
+<div class="panel panel-default" style="height:250px; overflow:auto;border: solid 1px;">
+<div class="panel-body">
 <legend>Operation</legend>
-  <%= text_field :map_id, nil, type: :text, placeholder: "Local"%>
-  <%= text_field :begin_point, nil, type: :text, placeholder: "Begin point"%>
-  <%= text_field :end_point, nil, type: :text, placeholder: "End point"%>
-  <%= text_field :autonomy, nil, type: :text, placeholder: "Autonomy (Km/L)"%>
-  <%= text_field :price, nil, type: :text, placeholder: "Price (R$/L) (ex: 2.5)"%>
-  <br>
-  <input name="commit" value="Check the best route">
-</fieldset>
+  <form>
+    <%= text_field_tag :map_id, 'Sampa', type: :text, placeholder: "Local", required:'required'%>
+    <%= text_field_tag :begin_point, 'A', type: :text, placeholder: "Begin point", required:'required'%>
+    <%= text_field_tag :end_point, 'D', type: :text, placeholder: "End point", required:'required'%>
+    <%= text_field_tag :autonomy, '10', type: :text, placeholder: "Autonomy (Km/L)", required:'required'%>
+    <%= text_field_tag :price, '2.5', type: :text, placeholder: "Price (R$/L) (ex: 2.5)", required:'required'%>
+    <button type="submit" class="btn btn-primary">My route</button>
+  </form>
+  <div class="alert alert-success" role="alert" style='margin:15px'>
+    <p id='top_result'>...</p>
+  </div>
+  <legend>Report</legend>
+</div>
+</div>
+<script>
+/*
+paths#destroy
+GET    /figure/:map_id/:begin_point/:end_point/:autonomy/:pice(.:format) paths#figure
+*/
+$("form:last").submit(function( event ) {
+  var p = [$('#map_id').val(), $('#begin_point').val(), $('#end_point').val(), $('#autonomy').val(), $('#price').val()];
+  $.ajax({
+    url: "/figure/"+p.join('/'),
+  })
+  .done(function(text){
+    $('#top_result').html(text);
+  })
+  .fail(function() {})
+  .always(function() {});  
+  
+  return false;
+});
+</script>

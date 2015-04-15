@@ -54,7 +54,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0'
-#  gem "debugger"
+  gem "byebug"
   gem "awesome_print"
   gem 'factory_girl_rails' #, :require => false
 #  gem "cucumber-rails", :require => false
@@ -66,3 +66,5 @@ group :test, :development do
 end
  
 gem "activerecord-import"
+#gem "benchmark"
+gem "twitter-bootstrap-rails"

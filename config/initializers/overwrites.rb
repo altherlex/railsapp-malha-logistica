@@ -1,6 +1,7 @@
 class Array
 	def take_between_and_sort(begin_point, end_point)
 		self
+			.map(&:with_indifferent_access)
 			.select{|i| i[:begin_point]==begin_point and i[:end_point]==end_point}
 			.sort_by{|i| i[:distance]}
 	end
