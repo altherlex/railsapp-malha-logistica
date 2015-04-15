@@ -11,6 +11,8 @@ Arquiteturado em padrão RESTFul por ser de fácil chamada por outros sistemas.
 ## Modo#1: Tradional
 * sqlite3 e pg
 
+obs: Não implementado exceções (entrada de dados)
+
 ## Modo#2: Elasticsearch (TODO)
 
 * Implementar com Elasticsearch (Lucene): inserção via RESTFul e análise da rota com ruby
