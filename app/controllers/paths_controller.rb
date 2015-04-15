@@ -4,6 +4,7 @@ class PathsController < ApplicationController
   # GET /paths
   # GET /paths.json
   def index
+    @info_pattern = "Sampa, A, B, 10\r\nSampa, B, D, 15\r\nSampa, A, C, 20\r\nSampa, C, D, 30\r\nSampa, B, E, 50\r\nSampa, D, E, 30"
     @paths = Path.all
   end
 

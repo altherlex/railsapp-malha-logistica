@@ -16,7 +16,7 @@ function go(){
     <b>local, begin_point, end_point, distance</b>
   </pre>
   <form accept-charset="UTF-8" action="<%=create_massive_paths_path%>" method="get">
-    <%= text_area_tag :massive_paths, nil, rows:15, cols:130 %><br>
+    <%= text_area_tag :massive_paths, @info_pattern, rows:15, cols:130 %><br>
     <input name="commit" type="submit" value="Create massive Path">
   </form>
 </div>
