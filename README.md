@@ -2,9 +2,20 @@
 
 Serviço que provê a melhor e mais barata rota para a sua logística.
 
+[https://malha-logistica.herokuapp.com](https://malha-logistica.herokuapp.com)
+
 ## Análise
 
 Arquiteturado em padrão RESTFul por ser de fácil chamada por outros sistemas.
+
+## Modo#1: Tradional
+* sqlite3 e pg
+
+## Modo#2: Elasticsearch (TODO)
+
+* Implementar com Elasticsearch (Lucene): inserção via RESTFul e análise da rota com ruby
+* Verificar a performance com Benchmark
+
 
 ### Desafio
 
