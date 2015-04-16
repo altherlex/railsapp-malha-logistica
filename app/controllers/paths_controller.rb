@@ -80,9 +80,12 @@ class PathsController < ApplicationController
       s = x.report("analysing routes:"){ @analyse_routes = Path.analyse_paths(@routes.as_json)}
       t = x.report("taking the best:"){ @top_result = Path.mount_result(@analyse_routes, params[:begin_point], params[:end_point], params[:autonomy], params[:price]) }
     end
-    #render text:@top_result.inspect
     rows = {db_rows:@routes.size, analyse_rows:@analyse_routes.size}
-    render action: 'figure', locals: {top_result: @top_result, report:report, rows:rows}
+    if params[:format] == 'json'
+      render json: @top_result and return
+    else
+      render action: 'figure', locals: {top_result: @top_result, report:report, rows:rows} and return
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.
