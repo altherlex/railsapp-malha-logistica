@@ -4,7 +4,7 @@ MalhaLogistica::Application.routes.draw do
       get :create_massive
     end
   end
-  get 'figure/:map_id/:begin_point/:end_point/:autonomy/:price' => 'paths#figure'
+  get 'figure(/:map_id/:begin_point/:end_point/:autonomy/:price)' => 'paths#figure'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

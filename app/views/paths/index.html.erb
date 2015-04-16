@@ -52,7 +52,7 @@ function go(){
 <%#= link_to 'New Path', new_path_path %>
 </div>
 </div>
-<div class="panel panel-default" style="height:250px; overflow:auto;border: solid 1px;">
+<div class="panel panel-default" style="height:350px; overflow:auto;border: solid 1px;">
 <div class="panel-body">
 <legend>Operation</legend>
   <form>
@@ -65,8 +65,11 @@ function go(){
   </form>
   <div class="alert alert-success" role="alert" style='margin:15px'>
     <p id='top_result'>...</p>
+    <h6>Cost(R$), distance(Km) </h6>
   </div>
-  <legend>Report</legend>
+  <legend>Benchmark</legend>
+  <pre id="benchmark">
+  </pre>
 </div>
 </div>
 <script>
@@ -75,13 +78,10 @@ paths#destroy
 GET    /figure/:map_id/:begin_point/:end_point/:autonomy/:pice(.:format) paths#figure
 */
 $("form:last").submit(function( event ) {
-  var p = [$('#map_id').val(), $('#begin_point').val(), $('#end_point').val(), $('#autonomy').val(), $('#price').val()];
   $.ajax({
-    url: "/figure/"+p.join('/'),
+    url: "/figure?"+$('form:last').serialize()
   })
-  .done(function(text){
-    $('#top_result').html(text);
-  })
+  .done(function(text){})
   .fail(function() {})
   .always(function() {});  
   

@@ -1,0 +1,2 @@
+$('#top_result').html('<%=top_result.inspect%>');
+$('#benchmark').html("<%= escape_javascript(render(partial:'benchmark', locals:{report:report, rows:rows})).html_safe %>");

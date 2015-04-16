@@ -1,0 +1,33 @@
+<p>db rows loaded: <%=rows[:db_rows]%></p>
+<p>analyzed lines: <%=rows[:analyse_rows]%></p>
+<table class='table'>
+<thead>
+<tr>
+  <th></th>
+  <th>user (sec)</th>
+  <th>system (sec)</th>
+  <th>total (sec)</th>
+  <th>real (sec)</th>
+</tr>
+</thead>
+<tbody>
+	<%report.each do |row|%>
+	<tr>
+		<td><%= row.label %></td>
+		<td><%= row.cstime %></td>
+		<td><%= row.stime %></td>
+		<td><%= row.total %></td>
+		<td><%= row.real %></td>
+	</tr>
+	<%end%>
+</tbody>	
+<tfoot>
+	<tr>	
+		<td>total:</td>
+		<td><%=report.map(&:cstime).sum%></td>
+		<td><%=report.map(&:stime).sum%></td>
+		<td><%=report.map(&:total).sum%></td>
+		<td><%=report.map(&:real).sum%></td>
+	</tr>
+</tfoot>	
+</table>
