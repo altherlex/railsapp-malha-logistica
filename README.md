@@ -11,12 +11,15 @@ Ordem de parametros:
 ```
 
 ```
-$ curl -XGET "http://localhost:3000/figure/Sampa/A/D/10/2.json"
+$ curl -XGET "https://malha-logistica.herokuapp.com/figure/Sampa/A/D/10/2.json"
+
 {"points":["A","B","D"],"cost":5.0,"distance":25.0}
 
 ou 
 
-$ curl -XGET "http://localhost:3000/figure?map_id=Sampa&begin_point=A&end_point=D&autonomy=10&price=2.5&format=json"
+$ curl -XGET "https://malha-logistica.herokuapp.com/figure?map_id=Sampa&begin_p
+oint=A&end_point=D&autonomy=10&price=2.5&format=json"
+
 {"points":["A","B","D"],"cost":6.25,"distance":25.0}
 ```
 
