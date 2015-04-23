@@ -23,6 +23,12 @@ oint=A&end_point=D&autonomy=10&price=2.5&format=json"
 {"points":["A","B","D"],"cost":6.25,"distance":25.0}
 ```
 
+## Executando testes de unidade
+
+```
+rspec
+```
+
 ## Análise
 
 Arquiteturado em padrão RESTFul por ser de fácil chamada por outros sistemas.
